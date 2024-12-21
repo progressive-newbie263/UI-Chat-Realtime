@@ -6,6 +6,7 @@ export { default as Auth } from './Auth';
 export { default as ChannelSearch } from './ListFragment/ChannelSearch';
 export { default as TeamChannelList } from './ListFragment/TeamChannelList';
 export { default as TeamChannelPreview } from './ListFragment/TeamChannelPreview';
+export { default as ResultDropdown } from './ListFragment/ResultDropdown';
 
 //channelFragment folder
 export { default as ChannelInner } from './ChannelFragment/ChannelInner';

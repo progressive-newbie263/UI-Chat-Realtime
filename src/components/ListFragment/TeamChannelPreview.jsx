@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, useChatContext } from 'stream-chat-react';
 
-const TeamChannelPreview = ({ channel, type }) => {
+const TeamChannelPreview = ({ setActiveChannel, setIsCreating, setIsEditing, setToggleContainer, channel, type }) => {
   const { channel: activeChannel, client } = useChatContext();
   
   const ChannelPreview = () => (
@@ -18,11 +18,15 @@ const TeamChannelPreview = ({ channel, type }) => {
   const DirectPreview = () => {
     const members = Object.values(channel.state.members).filter(({ user }) => user.id !== client.userID);
   
+    //stream có tạo sẵn 1 tài khoản mặc định, nó có role admin
+    //các tài khoản khác có role 'member' khi được tạo 1 cách thủ công (tạo qua sign up/ đăng nhập qua sign in)
+    console.log(members[0]); 
+
     return (
       <div className='channel-preview__item single'>
         <Avatar 
           image={members[0]?.user?.image}
-          name={members[0]?.user?.fullName}
+          name={members[0]?.user?.fullName || members[0]?.user?.id}
           size={24}
         />
 
@@ -37,7 +41,13 @@ const TeamChannelPreview = ({ channel, type }) => {
         channel?.id === activeChannel?.id ? 'channel-preview__wrapper__selected' : 'channel-preview__wrapper'
       }
       onClick = {() => {
-        console.log(channel)
+        setIsCreating(false);
+        setIsEditing(false);
+        setActiveChannel(channel);
+        
+        if(setToggleContainer) {
+          setToggleContainer((prevState) => !prevState);
+        }
       }}
     >
       {type === 'team' ? <ChannelPreview /> : <DirectPreview />}

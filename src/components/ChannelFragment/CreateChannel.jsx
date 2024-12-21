@@ -9,16 +9,13 @@ const ChannelNameInput = ({ channelName = '', setChannelName }) => {
 
   const handleChange = (e) => {
     e.preventDefault();
-
     setChannelName(e.target.value);
   }
   
   return (
     <div className='channel-name-input__wrapper'>
       <p>Name</p>
-
       <input value={channelName} onChange={handleChange} placeholder='Enter channel...' />
-
       <p>Add Members</p>
     </div>
   )
@@ -59,7 +56,10 @@ const CreateChannel = ({ createType, setIsCreating }) => {
       {createType === 'team' && <ChannelNameInput channelName={channelName} setChannelName={setChannelName} /> }
       <UserList setSelectedUsers={setSelectedUsers} />
 
-      {/* showing channel */}
+      {/* 
+        showing channel/ create a new channel.
+        If it is a team, create channel. Otherwise, create a group for messaging purposes. 
+      */}
       <div className='create-channel__button-wrapper' onClick={createChannel}>
         <p>
           {createType === 'team' ? 'Create Channel' : 'Create Message Group' }
