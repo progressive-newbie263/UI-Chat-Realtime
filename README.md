@@ -1,7 +1,9 @@
 # Getting Started with Create React App
 
 backend (Private/ hidden): https://github.com/progressive-newbie263/backend-Chat-Realtime
-<br>
+
+With some issues related to Heroku, the project failed to deploy at the moment, ill try to figure it out in the near future
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
